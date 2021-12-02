@@ -1,9 +1,31 @@
-<h3> Insertar un usuario</h3>
-Nombre <input #userName><br>
-Apellido1 <input #userApp1><br>
-Apellido2 <input #userApp2><br>
-<button type="button" (click) = "insertarUsuario(userName.value, userApp1.value, userApp2.value)">Insertar</button><br>
-<hr>
+<div class = "contenido">
+    <h3> Insertar un usuario</h3><br>
+
+    <div class="col-md-4">
+    <table class="table table-borderless">
+        <tbody>
+            <tr>
+                <th scope="row">Nombre</th>
+                <td><input #userName required></td>
+            </tr>
+            <tr>
+                <th scope="row">Apellido 1</th>
+                <td><input #userApp1 required></td>
+            <tr>
+                <th scope="row">Apellido 2</th>
+                <td><input #userApp2 required></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-grid gap-2">
+        <button type="button" 
+                class="btn btn-outline-primary"
+                (click) = "insertarUsuario(userName.value, userApp1.value, userApp2.value)">
+                Insertar
+        </button>
+    </div>
+</div>
+<br>
 
 <!--<h3> Borrar un usuario</h3>
 Id <input #idUser><br>

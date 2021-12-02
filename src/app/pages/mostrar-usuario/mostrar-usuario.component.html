@@ -1,11 +1,38 @@
-<h3> Mostrar usuario</h3>
-¿Que usuario quieres que te muestre? <input #userId><br>
-<button type="button" (click) = "mostrarUsuario(userId.value)">Mostrar</button><br>
-<hr>
-<div *ngIf="usuario!=null">
-Nombre:{{usuario.nombre}} <br>
-Apellido1:{{usuario.apellido1}} <br>
-Apellido2:{{usuario.apellido2}} <br>
-<hr>
+<div class = "contenido">
+    <h3> Mostrar usuario</h3>
+  
+    <form>
+        <label>¿Que usuario quieres que te muestre? </label> &nbsp;
+        <input type="text"  #userId>&nbsp;
+        <button type="button" class="btn btn-outline-primary" 
+        (click) = "mostrarUsuario(userId.value)">Mostrar</button>
+    </form>
+  
+    <div *ngIf="usuario!=null">
+      <hr>
+      <div class="col-md-3">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th scope="row" class="table-active">Id</th>
+              <td class="table-primary">{{usuario.id}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Nombre</th>
+              <td class="table-info">{{usuario.nombre}}</td>
+            </tr>
+            <tr>
+              <th scope="row" class="table-active">Apellido 1</th>
+              <td class="table-primary">{{usuario.apellido1}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Apellido 2</th>
+              <td class="table-info">{{usuario.apellido2}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 </div>
+<hr>
 
