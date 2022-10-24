@@ -1,38 +1,99 @@
 <div class = "contenido">
-    <h3> Mostrar usuario</h3>
-  
-    <form>
-        <label>¿Que usuario quieres que te muestre? </label> &nbsp;
-        <input type="text"  #userId>&nbsp;
-        <button type="button" class="btn btn-outline-primary" 
-        (click) = "mostrarUsuario(userId.value)">Mostrar</button>
-    </form>
-  
-    <div *ngIf="usuario!=null">
-      <hr>
-      <div class="col-md-3">
-        <table class="table table-bordered">
+  <div class = "user">
+    <div class = "main"> 
+      <div>
+        <table class="table table-borderless">
           <tbody>
             <tr>
-              <th scope="row" class="table-active">Id</th>
-              <td class="table-primary">{{usuario.id}}</td>
+              <td colspan="2" align="center">
+                <h3> Mostrar un usuario</h3>
+              </td>
             </tr>
             <tr>
-              <th scope="row">Nombre</th>
-              <td class="table-info">{{usuario.nombre}}</td>
-            </tr>
-            <tr>
-              <th scope="row" class="table-active">Apellido 1</th>
-              <td class="table-primary">{{usuario.apellido1}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Apellido 2</th>
-              <td class="table-info">{{usuario.apellido2}}</td>
+              <td colspan="2" align="center">
+                <label>¿Que usuario quieres que te muestre?</label>
+              </td> 
             </tr>
           </tbody>
         </table>
+        <div class="d-grid gap-2">
+          <input type="text"  #userId>
+        </div>
+        <br>
+        <div class="d-grid gap-2">
+          <button type="button" 
+          class="btn btn-outline-primary"
+          (click) = "mostrarUsuario(userId.value)">
+            Mostrar
+          </button>
+        </div>
       </div>
+    </div> 
+
+    <div *ngIf="usuario!=null" class = "main">
+      <div class="col-md-8">
+        <table class="table table-bordered">
+          <tbody>
+            <tr class="sin-borde">
+              <td colspan="2" align="center" class="sin-borde">
+                <h3> Usuario con id {{usuario.id}}</h3>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="table-light">Nombre</th>
+              <td>{{usuario.nombre}}</td>
+            </tr>
+            <tr>
+              <th scope="row" class="table-secondary">Apellido 1</th>
+              <td>{{usuario.apellido1}}</td>
+            </tr>
+            <tr>
+              <th scope="row" class="table-light">Apellido 2</th>
+              <td>{{usuario.apellido2}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div> 
     </div>
-</div>
-<hr>
+  </div> 
+
+  <div *ngIf="apiService.usuarios!=null && apiService.usuarios.length > 0" class ="users">
+
+    <div> 
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td colspan="2" align="center">
+                <h1> Tabla Completa de Usuarios</h1>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+
+    <div class = "table-users">
+      <div class="col-lg-12">
+        <table class="table table-light table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido 1</th>
+              <th scope="col">Apellido 2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of apiService.usuarios">
+              <th scope="row">{{user._id}}</th>
+              <td style="color: black;">{{user.nombre}}</td>
+              <td style="color: black;">{{user.apellido1}}</td>
+              <td style="color: black;">{{user.apellido2}}</td>
+            </tr>    
+          </tbody>
+        </table> 
+      </div>  
+    </div>
+  </div>
+</div> 
 

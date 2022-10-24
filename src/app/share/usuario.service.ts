@@ -11,13 +11,21 @@ export class UsuarioService
 
   private url = "http://localhost:3000/usuarios";
 
-  public usuario: Usuario;
-  
-  constructor(private http: HttpClient) { }
+  public usuarios: Usuario[];
 
-  getUsuario(id:number)
+  constructor(private http: HttpClient) 
+  { 
+      this.usuarios = [];
+  }
+
+  getUsuario(id:string)
   {
     return this.http.get(this.url + "/" + id)
+  }
+
+  getUsuarios()
+  {
+    return this.http.get(this.url)
   }
 
   postUsuario(newUser: Usuario)

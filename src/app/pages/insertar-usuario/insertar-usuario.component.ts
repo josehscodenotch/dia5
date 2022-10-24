@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { UsuarioService } from 'src/app/share/usuario.service';
 import { Usuario } from 'src/app/models/usuario';
 
@@ -12,7 +13,7 @@ export class InsertarUsuarioComponent implements OnInit
 
   public message:string
 
-  constructor(private apiService: UsuarioService) 
+  constructor(private apiService: UsuarioService, private toast: ToastrService) 
   { 
     this.message = null;
   }
@@ -20,18 +21,30 @@ export class InsertarUsuarioComponent implements OnInit
 
   insertarUsuario(nombre:string, apellido1: string, apellido2:string)
   {
-    this.apiService.postUsuario(new Usuario(0,nombre,apellido1, apellido2))
-    .subscribe((data:string) =>
-    {
-      console.log(data);
-      if (data != "-1")
-        alert("Se ha insertado el usuario con id: " + data)
-      else
-        alert("Error al insertar al usuario");
+    if (nombre == "" || apellido1 == "" || apellido2 == "")
+      this.toast.error("Falta un campo obligatorio.", "", 
+                       {timeOut: 2000, positionClass:'toast-top-center'});
+      
+    else
+    {  
+      let nuevoUsuario: Usuario = new Usuario("0",nombre,apellido1, apellido2)
+      this.apiService.postUsuario(nuevoUsuario)
+      .subscribe((data:string) =>
+      {
+        console.log(data);
+        if (data != "-1")
+        {  
+          this.toast.success("Usuario insertado satisfactoriamente con id  " + data, "",
+                            {timeOut: 2000, positionClass:'toast-top-center'});       
+        }
+        else
+          this.toast.error("Error al insertar al usuario", "", 
+                           {timeOut: 2000, positionClass:'toast-top-center'});
 
-    })
-
+      })
+    }
   } 
+
 
   eliminarUsuario(id:string)
   {

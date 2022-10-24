@@ -1,36 +1,36 @@
 <div class = "contenido">
     <div class = "main">
-    <div>
-    <table class="table table-borderless">
-        <tbody>
-            <tr>
-                <td colspan="2" align="center">
-                    <h3> Insertar un usuario</h3>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">Nombre</th>
-                <td><input #userName required></td>
-            </tr>
-            <tr>
-                <th scope="row">Apellido 1</th>
-                <td><input #userApp1 required></td>
-            <tr>
-                <th scope="row">Apellido 2</th>
-                <td><input #userApp2 required></td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="d-grid gap-2">
-        <button type="button" 
-                class="btn btn-outline-primary"
-                (click) = "insertarUsuario(userName.value, userApp1.value, userApp2.value)">
-                Insertar
-        </button>
+     <div> 
+        <table class="table table-borderless">
+            <tbody>
+                <tr>
+                    <td colspan="2" align="center">
+                        <h3> Insertar un usuario</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Nombre</th>
+                    <td><input #userName required></td>
+                </tr>
+                <tr>
+                    <th scope="row">Apellido 1</th>
+                    <td><input #userApp1 required></td>
+                <tr>
+                    <th scope="row">Apellido 2</th>
+                    <td><input #userApp2 required></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="d-grid gap-2">
+            <button type="button" 
+                    class="btn btn-outline-primary"
+                    (click) = "insertarUsuario(userName.value, userApp1.value, userApp2.value)">
+                    Insertar
+            </button>
+        </div>
     </div>
 </div>
-</div>
-<br>
+
 
 <!--<h3> Borrar un usuario</h3>
 Id <input #idUser><br>
